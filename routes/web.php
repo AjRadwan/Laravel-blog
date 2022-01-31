@@ -14,14 +14,13 @@ use App\Http\Controllers\ContactController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
+ 
+ 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 
 
 
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
-
 Route::get('blog/single-post', [BlogController::class, 'show'])->name('single-post');
 
 
@@ -30,3 +29,10 @@ Route::get('about', function () {
 })->name('about');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+require __DIR__.'/auth.php';
