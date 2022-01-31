@@ -16,16 +16,17 @@ use App\Http\Controllers\ContactController;
 */
 
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 
 
 
-Route::get('blog', [BlogController::class, 'index']);
-Route::get('blog/single-post', [BlogController::class, 'show']);
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+
+Route::get('blog/single-post', [BlogController::class, 'show'])->name('single-post');
 
 
 Route::get('about', function () { 
     return view('about');
-});
+})->name('about');
 
-Route::get('contact', [ContactController::class, 'index']);
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
