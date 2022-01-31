@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +15,17 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [WelcomeController::class, 'index']);
+
 
 
 Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/single-post', [BlogController::class, 'show']);
+
+
+Route::get('about', function () { 
+    return view('about');
+});
+
+Route::get('contact', [ContactController::class, 'index']);
