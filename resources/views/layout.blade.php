@@ -32,6 +32,13 @@
     <li><a class="{{Request::routeIs('blog.index') ? 'active' : ''}}"s href="{{route('blog.index')}}">Blog</a></li>
     <li><a class="{{Request::routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">About</a></li>
     <li><a class="{{Request::routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">Contact</a></li>
+   
+
+    @guest
+    {{-- If someone is not logged in, they will see the link below --}}
+    <li><a class="{{Request::routeIs('login') ? 'active' : ''}}" href="{{route('login')}}">Login</a></li>
+    <li><a class="{{Request::routeIs('register') ? 'active' : ''}}" href="{{route('register')}}">Register</a></li>
+    @endguest
   </ul>
 </div>
 
