@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 class BlogController extends Controller
 {
     
@@ -17,15 +18,20 @@ class BlogController extends Controller
 
     public function store(Request $request){
         $request->validate([
-           'title' => 'required',
-           'image' => 'required | image',
-           'body' =>  'required'
+            'title' => 'required',
+            'image' => 'required | image',
+            'body' => 'required'
         ]);
 
         $title = $request->input('title');
-        $slug = Str::slug('title', '-');
+        $slug = Str::slug($title, '-');
         $user_id = Auth::user()->id;
         $body = $request->input('body');
+
+        // File Upload
+        $request->file('image')->store('public');
+
+        dd('Validation passed. You can now request the input');
 
     }
 
