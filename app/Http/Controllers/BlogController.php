@@ -37,10 +37,9 @@ class BlogController extends Controller
        $post->user_id = $user_id;
        $post->imagePath = $imagePath;
        $post->body = $body;
-    
        $post->save();
 
-       return redirect()->back();
+       return redirect()->back()->with('message', "Post Created Successfully");
 
     }
 
