@@ -13,7 +13,7 @@
     @csrf
     <!-- Title -->
     <label for="title"><span>Title</span></label>
-    <input type="text" id="title" name="title" />
+    <input type="text" id="title" name="title"  value="{{old('title')}}"/>
     @error('title')
        <strong style="color: red; font-weight: bold; margin-bottom: 20px;"> {{ $message }}</strong>
     @enderror
@@ -27,7 +27,7 @@
 
     <!-- Body-->
     <label for="body"><span>Body</span></label>
-    <textarea id="body" name="body"></textarea>
+    <textarea id="body" name="body">{{old('body')}}</textarea>
     @error('body')
        <strong style="color: red; font-weight: bold; margin-bottom: 20px;"> {{ $message }}</strong>
     @enderror
