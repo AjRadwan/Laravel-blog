@@ -24,6 +24,10 @@ Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/single-post', [BlogController::class, 'show'])->name('single-post');
 
 
+// to create blog post
+Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+
+
 Route::get('about', function () { 
     return view('about');
 })->name('about');
