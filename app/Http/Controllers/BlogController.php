@@ -15,6 +15,14 @@ class BlogController extends Controller
         return view('create-blog-post');
     }
 
+    public function store(Request $request){
+        $request->validate([
+           'title' => 'required',
+           'image' => 'required | image',
+           'body' =>  'required'
+        ]);
+    }
+
     public function show(){
         return view('single-post');
     }

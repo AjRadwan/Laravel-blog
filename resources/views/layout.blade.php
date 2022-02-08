@@ -15,7 +15,7 @@
     />
 
     {{-- ck Editor --}}
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+    @yield('CKEDITOR')
 
 
     <!-- AOS library -->
@@ -111,9 +111,7 @@
         .forEach((img) => img.addEventListener("load", () => AOS.refresh()));
     </script>
 
-<script>
-  CKEDITOR.replace( 'body' );
-</script>
+@yield('scripts')
 
   </body>
 </html>
