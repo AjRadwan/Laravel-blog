@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class BlogController extends Controller{
-    
+
+    public function __Construct(){
+       $this->middleware('auth')->except(['index']);
+}    
+
     public function index(){
         $posts = Post::all();
         return view('blog', compact('posts'));

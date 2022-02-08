@@ -16,19 +16,14 @@ use App\Http\Controllers\ContactController;
  
  
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
-
-
-Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
-
-Route::get('blog/{post:slug}', [BlogController::class, 'show'])->name('single-post');
-
-
-// to create blog post
-Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
-
-// to Store blog post 
-Route::post('blog/', [BlogController::class, 'store'])->name('blog.store');
-
+ 
+Route::controller(BlogController::class)->group(function () {
+    Route::get('blog', 'index')->name('blog.index');
+    Route::get('blog/create', 'create')->name('blog.create');
+    Route::get('blog/{post:slug}', 'show')->name('single-post');
+    Route::post('blog/',  'store')->name('blog.store');
+    
+});
 
 Route::get('about', function () { 
     return view('about');
