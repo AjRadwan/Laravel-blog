@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -21,6 +21,12 @@ class BlogController extends Controller
            'image' => 'required | image',
            'body' =>  'required'
         ]);
+
+        $title = $request->input('title');
+        $slug = Str::slug('title', '-');
+        $user_id = Auth::user()->id;
+        $body = $request->input('body');
+
     }
 
     public function show(){
