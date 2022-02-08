@@ -22,72 +22,20 @@
   </div>
 
   <section class="cards-blog latest-blog">
+    @foreach ($posts as $post)
     <div class="card-blog-content">
-      <img src="{{asset('images/pic1.jpg')}}" alt="" />
+      <img src="{{asset($post->imagePath)}}" alt="" />
       <p>
-        2 hours ago
-        <span>Written By Alphayo Wakarindi</span>
+       {{$post->created_at->diffForhumans()}}
+        <span>Written By {{$post->user->name}}</span>
       </p>
       <h4>
-        <a href="{{route('single-post')}}">Benefits of Getting Covid 19 Vaccination</a>
+        <a href="{{route('single-post', $post)}}">{{$post->title}}</a>
       </h4>
     </div>
+    @endforeach
 
-    <div class="card-blog-content" data-aos="fade-left">
-        <img src="{{asset('images/pic2.jpg')}}" alt="" />
-      <p>
-        23 hours ago
-        <span>Written By Alphayo Wakarindi</span>
-      </p>
-      <h4>
-        <a href="{{route('single-post')}}">Top 10 Music Stories Never Told</a>
-      </h4>
-    </div>
-
-    <div class="card-blog-content" data-aos="fade-up">
-        <img src="{{asset('images/pic3.jpg')}}" alt="" />
-      <p>
-        2 days ago
-        <span>Written By Alphayo Wakarindi</span>
-      </p>
-      <h4>
-        <a href="{{route('single-post')}}">WRC Safari Rally Back To Kenya After 19 Years</a>
-      </h4>
-    </div>
-
-    <div class="card-blog-content" data-aos="fade-left">
-      <img src="{{asset('images/pic4.jpg')}}" alt="" />
-      <p>
-        3 days ago
-        <span>Written By Alphayo Wakarindi</span>
-      </p>
-      <h4>
-        <a href="{{route('single-post')}}">Premier League 2021/2022 Fixtures</a>
-      </h4>
-    </div>
-
-    <div class="card-blog-content" data-aos="fade-up">
-        <img src="{{asset('images/pic5.jpg')}}" alt="" />
-      <p>
-        1 week ago
-        <span>Written By Alphayo Wakarindi</span>
-      </p>
-      <h4>
-        <a href="{{route('single-post')}}">12 Health Benefits Of Pomegranate Fruit</a>
-      </h4>
-    </div>
-
-    <div class="card-blog-content" data-aos="fade-left">
-        <img src="{{asset('images/pic6.jpg')}}" alt="" />
-      <p>
-        1 month ago
-        <span>Written By Alphayo Wakarindi</span>
-      </p>
-      <h4>
-        <a href="{{route('single-post')}}">Nairobi, The Only City In The World With A National Park</a>
-      </h4>
-    </div>
-
+  
     <!-- pagination -->
     <div class="pagination" id="pagination">
       <a href="">&laquo;</a>

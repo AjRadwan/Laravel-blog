@@ -17,54 +17,23 @@
 <main class="container">
   <h2 class="header-title">Latest Blog Posts</h2>
   <section class="cards-blog latest-blog">
+    @foreach ($posts as $post)
     <div class="card-blog-content">
-      <img src="images/pic1.jpg" alt="" />
+      <img src="{{asset($post->imagePath)}}" alt="" />
       <p>
-        2 hours ago
-        <span style="float: right">Written By Anowar </span>
+       {{$post->created_at->diffForhumans()}}
+        <span>Written By {{$post->user->name}}</span>
       </p>
-      <h4 style="font-weight: bolder">
-        <a href="single-blog.html"
-          >Benefits of Paul's Photography capturing your Wedding</a
-        >
+      <h4>
+        <a href="{{route('single-post', $post)}}">{{$post->title}}</a>
       </h4>
     </div>
+    @endforeach
 
-    <div class="card-blog-content" data-aos="fade-left">
-      <img src="images/pic2.jpg" alt="" />
-      <p>
-        23 hours ago
-        <span style="float: right">Written By Anowar </span>
-      </p>
-      <h4 style="font-weight: bolder">
-        <a href="single-blog.html"
-          >Benefits of Using Drones in Aerial Photography</a>
-      </h4>
-    </div>
+  
 
-    <div class="card-blog-content" data-aos="fade-up">
-      <img src="images/pic3.jpg" alt="" />
-      <p>
-        2 days ago
-        <span style="float: right">Written By Anowar </span>
-      </p>
-      <h4 style="font-weight: bolder">
-        <a href="single-blog.html"
-          >Best Location Ideas for Your Next Photo Shoot</a
-        >
-      </h4>
-    </div>
-
-    <div class="card-blog-content" data-aos="fade-left">
-      <img src="images/pic4.jpg" alt="" />
-      <p>
-        3days ago
-        <span style="float: right">Written By Anowar </span>
-      </p>
-      <h4 style="font-weight: bolder">
-        <a href="single-blog.html">8 Most Popular Photography Genres</a>
-      </h4>
-    </div>
+   
+ 
   </section>
 </main>
 @endsection

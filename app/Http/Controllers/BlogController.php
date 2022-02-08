@@ -9,7 +9,8 @@ class BlogController extends Controller
 {
     
     public function index(){
-        return view('blog');
+        $posts = Post::all();
+        return view('blog', compact('posts'));
     }
 
     public function create(){
@@ -29,7 +30,7 @@ class BlogController extends Controller
         $body = $request->input('body');
 
         // File Upload
-       $imagePath = $request->file('image')->store('public');
+        $imagePath = 'storage/' . $request->file('image')->store('postsImages', 'public');
 
        $post = new Post();
        $post->title = $title;
@@ -43,7 +44,8 @@ class BlogController extends Controller
 
     }
 
-    public function show(){
-        return view('single-post');
+    public function show($slug){
+         $post = Post::where('slug', $slug)->first();
+        return view('single-post', compact('post'));
     }
 }

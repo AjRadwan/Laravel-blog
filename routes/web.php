@@ -18,9 +18,9 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 
 
-
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('blog/single-post', [BlogController::class, 'show'])->name('single-post');
+
+Route::get('blog/{post:slug}', [BlogController::class, 'show'])->name('single-post');
 
 
 // to create blog post
