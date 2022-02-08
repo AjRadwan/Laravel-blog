@@ -13,6 +13,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+
+    {{-- ck Editor --}}
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
+
     <!-- AOS library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
@@ -105,5 +110,10 @@
         .querySelectorAll("img")
         .forEach((img) => img.addEventListener("load", () => AOS.refresh()));
     </script>
+
+<script>
+  CKEDITOR.replace( 'body' );
+</script>
+
   </body>
 </html>
