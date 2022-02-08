@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -29,9 +29,18 @@ class BlogController extends Controller
         $body = $request->input('body');
 
         // File Upload
-        $request->file('image')->store('public');
+       $imagePath = $request->file('image')->store('public');
 
-        dd('Validation passed. You can now request the input');
+       $post = new Post();
+       $post->title = $title;
+       $post->slug = $slug;
+       $post->user_id = $user_id;
+       $post->imagePath = $imagePath;
+       $post->body = $body;
+    
+       $post->save();
+
+       return redirect()->back();
 
     }
 
