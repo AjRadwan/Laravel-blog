@@ -5,8 +5,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-class BlogController extends Controller
-{
+class BlogController extends Controller{
     
     public function index(){
         $posts = Post::all();
@@ -44,8 +43,14 @@ class BlogController extends Controller
 
     }
 
-    public function show($slug){
-         $post = Post::where('slug', $slug)->first();
+    // public function show($slug){
+    //      $post = Post::where('slug', $slug)->first();
+    //     return view('single-post', compact('post'));
+    // }
+
+    // using route model binding
+
+    public function show(Post $post){
         return view('single-post', compact('post'));
     }
 }
