@@ -29,11 +29,6 @@
       </h4>
     </div>
     @endforeach
-
-  
-
-   
- 
   </section>
 </main>
 @endsection

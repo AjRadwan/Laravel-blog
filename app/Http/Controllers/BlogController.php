@@ -93,4 +93,9 @@ class BlogController extends Controller{
 
        return redirect()->back()->with('message', "Post Updated Successfully");
     }
+
+    public function delete(Post $post){
+        $post->delete();
+        return redirect()->back()->with('message', "Post Deleted Successfully");
+    }
 }

@@ -45,8 +45,10 @@
   <li><a class="{{Request::routeIs('register') ? 'active' : ''}}" href="{{route('register')}}">Register</a></li>
   @endguest
   
+   {{-- only authenticated user will be allowed see this page --}}
   @auth
   <li><a class="{{Request::routeIs('register') ? 'active' : ''}}" href="{{route('register')}}">Dashboard</a></li>
+ 
   @endauth
   </ul>
 </div>

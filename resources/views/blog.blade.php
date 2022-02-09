@@ -4,6 +4,9 @@
 @section('main')
 <main class="container">
   <h2 class="header-title">All Blog Posts</h2>
+  @if (session('message'))
+<strong style="color: green; font-weight: bold; text-align: center"> {{ session('message') }}</strong>
+@endif
   <div class="searchbar">
     <form action="">
       <input type="text" placeholder="Search..." name="search" />
@@ -28,7 +31,10 @@
       @if (auth()->user()->id === $post->user->id)
       <div class="post-buttons">
           <a href="{{route('blog.edit', $post)}}">Edit</a>
-          <form action="" method="">
+      
+          <form action="{{route('blog.delete', $post)}}" method="post">
+            @csrf
+            @method('delete')
               <input type="submit" value="Delete">
           </form>
       </div>

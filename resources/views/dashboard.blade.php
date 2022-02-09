@@ -13,7 +13,6 @@
 <div class="p-6 bg-white border-b border-gray-200">
     You're logged in!
 
-
     <div class="dashboard">
         <ul>
             <li><a href="{{route('blog.create')}}">Create Post</a></li>

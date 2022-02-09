@@ -22,10 +22,11 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('blog/create', 'create')->name('blog.create');
     Route::get('blog/{post:slug}', 'show')->name('single-post');
     Route::get('blog/{post}/edit', 'edit')->name('blog.edit');
-    Route::put('blog/{post}/update', 'update')->name('blog.update');
+    Route::put('blog/{post}', 'update')->name('blog.update');
+    Route::delete('blog/{post}', 'delete')->name('blog.delete');
     Route::post('blog/',  'store')->name('blog.store');    
 });
-
+    
 Route::get('about', function () { 
     return view('about');
 })->name('about');
