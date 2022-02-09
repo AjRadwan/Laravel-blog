@@ -8,12 +8,17 @@ use Illuminate\Support\Str;
 class BlogController extends Controller{
 
     public function __Construct(){
-       $this->middleware('auth')->except(['index']);
+       $this->middleware('auth')->except(['index', 'show']);
 }    
 
-    public function index(){
-        $posts = Post::all();
-        return view('blog', compact('posts'));
+    public function index(Request $request){
+        if ($request->search) {
+           $posts = Post::where('title', 'like', '%' . $request->search . '%')
+           ->orwhere('body', 'like', '%' . $request->search . '%')->latest()->get();
+        }else{
+            $posts = Post::all();
+        }
+       return view('blog', compact('posts'));
     }
 
     public function create(){
@@ -95,6 +100,7 @@ class BlogController extends Controller{
     }
 
     public function delete(Post $post){
+
         $post->delete();
         return redirect()->back()->with('message', "Post Deleted Successfully");
     }
