@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,12 +27,17 @@ Route::controller(BlogController::class)->group(function () {
     Route::delete('blog/{post}', 'delete')->name('blog.delete');
     Route::post('blog/',  'store')->name('blog.store');    
 });
-    
+
+
+
 Route::get('about', function () { 
     return view('about');
 })->name('about');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
+
+//Category resource controler
+Route::resource('categories', CategoryController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
