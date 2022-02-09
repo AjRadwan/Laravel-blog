@@ -32,9 +32,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required | unique:categories',
+        ]);
+
+        $name = $request->input('name');
+        $category = New Category();
+        $category->name = $name;
+        $category->save();
+        return redirect()->back()->with('message', "Category Created Successfully");
     }
 
     /**
@@ -43,8 +50,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
+    public function show(Category $category) {
         //
     }
 

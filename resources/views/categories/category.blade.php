@@ -29,6 +29,10 @@
 </form>
 </div>
 
+<div>
+    <a href="">Category List <span>&#8594</span> </a> 
+</div>
+
 </section>
 </main>
 @section('scripts')
