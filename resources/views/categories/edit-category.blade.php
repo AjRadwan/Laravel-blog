@@ -5,7 +5,7 @@
 @section('main')
 <main class="container" style="background-color: #fff;">
 <section id="contact-us">
-<h1 style="padding-top: 50px;">Create Category !</h1>
+<h1 style="padding-top: 50px;">Update Category !</h1>
 
 @if (session('message'))
 <strong style="color: green; font-weight: bold; text-align: center"> {{ session('message') }}</strong>
@@ -14,11 +14,12 @@
 
 <!-- Contact Form -->
 <div class="contact-form">
-<form action="{{route('categories.store')}}" method="POST">
+<form action="{{route('categories.update', $category)}}" method="POST">
+    @method('put')
     @csrf
     <!-- Title -->
     <label for="name"><span>Name</span></label>
-    <input type="text" id="name" name="name"  value="{{old('name')}}"/>
+    <input type="text" id="name" name="name"  value="{{$category->name}}"/>
     @error('name')
        <strong style="color: red; font-weight: bold; margin-bottom: 20px;"> {{ $message }}</strong>
     @enderror

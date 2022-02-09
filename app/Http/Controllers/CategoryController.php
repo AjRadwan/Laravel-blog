@@ -60,9 +60,8 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
-    {
-        //
+    public function edit(Category $category){
+        return view('categories.edit-category', compact('category'));
     }
 
     /**
@@ -72,9 +71,15 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
+    public function update(Request $request, Category $category){
+        $request->validate([
+            'name' => 'required | unique:categories',
+        ]);
+
+        $name = $request->input('name');
+        $category->name = $name;
+        $category->save();
+        return redirect()->back()->with('message', "Category Updated Successfully");
     }
 
     /**

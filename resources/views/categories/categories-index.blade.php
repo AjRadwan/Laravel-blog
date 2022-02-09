@@ -3,12 +3,11 @@
 @section('main')
     <div class="categories-list">
         <h1>Categories List</h1>
-           
-       @foreach ($categories as $category )
+        @foreach ($categories as $category )
        <div class="item">
         <p>{{$category->name}}</p>
         <div>
-            <a href="">Edit</a>
+            <a href="{{route('categories.edit', $category)}}">Edit</a>
         </div>
         <form action="" method="">
             <input type="submit" value="Delete">
