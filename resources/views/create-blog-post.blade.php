@@ -7,7 +7,7 @@
 <section id="contact-us">
 <h1 style="padding-top: 50px;">Create New Post!</h1>
 
-@include('include.flash-message')
+@include('include.flash-message')     
 
 
 <!-- Contact Form -->
@@ -25,6 +25,18 @@
     <label for="image"><span>Image</span></label>
     <input type="file" id="image" name="image" />
     @error('image')
+       <strong style="color: red; font-weight: bold; margin-bottom: 20px;"> {{ $message }}</strong>
+    @enderror
+
+     <!-- Drop down -->
+     <label for="categories"><span>Choose a Category:</span></label>
+     <select name="category_id" id="categories">
+         <option selected disabled>Select option </option>
+         @foreach ($categories as $category)
+             <option value="{{ $category->id }}">{{ $category->name }}</option>
+         @endforeach
+     </select>
+     @error('category_id')
        <strong style="color: red; font-weight: bold; margin-bottom: 20px;"> {{ $message }}</strong>
     @enderror
 

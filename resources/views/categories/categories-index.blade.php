@@ -4,6 +4,7 @@
     <div class="categories-list">
         <h1>Categories List</h1>
        @include('include.flash-message')
+       
         @foreach ($categories as $category )
        <div class="item">
         <p>{{$category->name}}</p>

@@ -25,17 +25,20 @@ class BlogController extends Controller{
     }
 
     public function create(){
-        return view('create-blog-post');
+        $categories = Category::all();
+        return view('create-blog-post', compact('categories'));
     }
 
     public function store(Request $request){
         $request->validate([
             'title' => 'required',
             'image' => 'required | image',
-            'body' => 'required'
+            'body' => 'required',
+            'category_id' => 'required'
         ]);
 
         $title = $request->input('title');
+        $category_id = $request->input('category_id');
         $slug = Str::slug($title, '-');
         $user_id = Auth::user()->id;
         $body = $request->input('body');
@@ -45,6 +48,7 @@ class BlogController extends Controller{
 
        $post = new Post();
        $post->title = $title;
+       $post->category_id = $category_id;
        $post->slug = $slug;
        $post->user_id = $user_id;
        $post->imagePath = $imagePath;

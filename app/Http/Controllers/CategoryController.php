@@ -13,8 +13,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-    $categories = Category::all();
-      return view('categories.categories-index', compact('categories'));
+      return view('categories.categories-index');
     }
 
     /**
@@ -23,7 +22,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('categories.category');
+        $categories = Category::all();
+        return view('categories.category', compact('categories'));
     }
 
     /**

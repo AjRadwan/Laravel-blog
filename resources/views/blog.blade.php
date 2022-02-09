@@ -5,7 +5,7 @@
 <main class="container">
   <h2 class="header-title">All Blog Posts</h2>
   @include('include.flash-message')
-  
+   
   <div class="searchbar">
     <form action="">
       <input type="text" placeholder="Search..." name="search" />
