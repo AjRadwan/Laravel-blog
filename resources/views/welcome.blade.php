@@ -11,8 +11,6 @@
 </header>
 @endsection
 
-
-
 @section('main')
 <main class="container">
   <h2 class="header-title">Latest Blog Posts</h2>

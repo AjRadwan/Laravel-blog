@@ -7,9 +7,7 @@
 <section id="contact-us">
 <h1 style="padding-top: 50px;">Create Category !</h1>
 
-@if (session('message'))
-<strong style="color: green; font-weight: bold; text-align: center"> {{ session('message') }}</strong>
-@endif
+@include('include.flash-message')
  
 
 <!-- Contact Form -->

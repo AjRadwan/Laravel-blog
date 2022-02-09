@@ -4,9 +4,8 @@
 @section('main')
 <main class="container">
   <h2 class="header-title">All Blog Posts</h2>
-  @if (session('message'))
-<strong style="color: green; font-weight: bold; text-align: center"> {{ session('message') }}</strong>
-@endif
+  @include('include.flash-message')
+  
   <div class="searchbar">
     <form action="">
       <input type="text" placeholder="Search..." name="search" />
