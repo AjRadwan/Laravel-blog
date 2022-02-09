@@ -44,17 +44,53 @@ class BlogController extends Controller{
        $post->save();
 
        return redirect()->back()->with('message', "Post Created Successfully");
+//return redirect()->route('index')->with('message', "Post Created SuccessFully!");
 
     }
 
     // public function show($slug){
-    //      $post = Post::where('slug', $slug)->first();
+    //     $post = Post::where('slug', $slug)->first();
     //     return view('single-post', compact('post'));
     // }
 
     // using route model binding
 
+    public function edit(Post $post) {
+        if (auth()->user()->id !== $post->user->id){
+            abort(403);
+        }
+        return view('edit-blog', compact('post'));
+    }
+
     public function show(Post $post){
         return view('single-post', compact('post'));
+    }
+
+
+
+    public function update(Request $request, Post $post){
+        if (auth()->user()->id !== $post->user->id){
+            abort(403);
+        }
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required | image',
+            'body' => 'required'
+        ]);
+
+        $title = $request->input('title');
+        $slug = Str::slug($title, '-');
+        $body = $request->input('body');
+
+        // File Upload
+        $imagePath = 'storage/' . $request->file('image')->store('postsImages', 'public');
+
+       $post->title = $title;
+       $post->slug = $slug;
+       $post->imagePath = $imagePath;
+       $post->body = $body;
+       $post->save();
+
+       return redirect()->back()->with('message', "Post Updated Successfully");
     }
 }

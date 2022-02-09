@@ -21,8 +21,9 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('blog', 'index')->name('blog.index');
     Route::get('blog/create', 'create')->name('blog.create');
     Route::get('blog/{post:slug}', 'show')->name('single-post');
-    Route::post('blog/',  'store')->name('blog.store');
-    
+    Route::get('blog/{post}/edit', 'edit')->name('blog.edit');
+    Route::put('blog/{post}/update', 'update')->name('blog.update');
+    Route::post('blog/',  'store')->name('blog.store');    
 });
 
 Route::get('about', function () { 
