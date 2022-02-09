@@ -14,9 +14,9 @@ class BlogController extends Controller{
     public function index(Request $request){
         if ($request->search) {
            $posts = Post::where('title', 'like', '%' . $request->search . '%')
-           ->orwhere('body', 'like', '%' . $request->search . '%')->latest()->get();
+           ->orwhere('body', 'like', '%' . $request->search . '%')->latest()->paginate(4);
         }else{
-            $posts = Post::all();
+            $posts = Post::latest()->paginate(4);
         }
        return view('blog', compact('posts'));
     }

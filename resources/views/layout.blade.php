@@ -18,6 +18,10 @@
     @yield('CKEDITOR')
 
 
+    {{-- tailwindcss --}}
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+
     <!-- AOS library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
