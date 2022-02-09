@@ -30,7 +30,7 @@
 </div>
 
 <div>
-    <a href="">Category List <span>&#8594</span> </a> 
+    <a href="{{route('categories.index')}}">Category List <span>&#8594</span> </a> 
 </div>
 
 </section>
