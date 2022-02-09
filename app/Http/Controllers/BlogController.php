@@ -11,17 +11,19 @@ class BlogController extends Controller{
        $this->middleware('auth')->except(['index', 'show']);
 }    
 
-    public function index(Request $request){
-        if ($request->search) {
-           $posts = Post::where('title', 'like', '%' . $request->search . '%')
-           ->orwhere('body', 'like', '%' . $request->search . '%')->latest()->paginate(4);
-        }else{
-            $posts = Post::latest()->paginate(4);
-        }
-        //displaying categories in index blog page
-       $categories = Category::all() ;
-       return view('blog', compact('posts', 'categories'));
+public function index(Request $request){
+    if ($request->search) {
+        $posts = Post::where('title', 'like', '%' . $request->search . '%')
+        ->orwhere('body', 'like', '%' . $request->search . '%')->latest()->paginate(4);
+    } elseif ($request->category){
+        $posts = Category::where('name', $request->category)->firstOrFail()->posts()->paginate(4)->withQueryString();
+        }else{ 
+         $posts = Post::latest()->paginate(4);
     }
+    //displaying categories in index blog page
+    $categories = Category::all() ;
+    return view('blog', compact('posts', 'categories'));
+}
 
     public function create(){
         $categories = Category::all();
