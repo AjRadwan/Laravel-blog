@@ -5,5 +5,5 @@
 ## Laravel Blog Pojrect with user authentication 
 
  
-![alt text](Images/ss.png)
+![alt text](Img/ss.png)
   
