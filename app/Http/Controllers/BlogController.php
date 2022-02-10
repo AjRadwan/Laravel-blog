@@ -75,8 +75,11 @@ public function index(Request $request){
         return view('edit-blog', compact('post'));
     }
 
+
     public function show(Post $post){
-        return view('single-post', compact('post'));
+        $category = $post->category;
+        $relatedPosts = $category->posts()->where('id', '!=', $post->id)->latest()->take(3)->get();
+        return view('single-post', compact('post', 'relatedPosts'));
     }
 
 
